@@ -347,4 +347,4 @@ A week is complete only when:
 - [ ] I updated the repository.
 - [ ] I can teach the concept without referring to notes.
 
-Only then is the topic considered complete.
+Only then is the topic considered complete. 
