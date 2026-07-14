@@ -1,0 +1,29 @@
+Build a neural-network that builds the next word:
+Just so -- the first few weeks, we can co-learn, I am going to restrict on the exercise:
+ 
+Vocabulary for the "Lite Language Model (not really)"
+Inventory
+Order
+Cabinet
+Drug
+Invoice
+Shipment
+Receive
+Restock
+Forecast
+Scenario
+ 
+Here is what you will train your neural-network with:
+Order -> Shipment
+Shipment -> Receive
+Receive -> Restock
+Restock -> Inventory
+Inventory -> Forecast
+Forecast -> Order
+ 
+If it works, if the input is "Forecast", the output is "Order"
+ 
+Clues:  "Embedding, Hidden Layer, Softmax"
+
+If you don't already know, learn these terms:
+Supervised Learning, Neurons, Weights, Bias, Forward Pass, Backpropagation, Gradient Descent

@@ -1,0 +1,90 @@
+import numpy as np
+
+# The "language" is the purchase-order lifecycle.
+# Each state is one "word" in our tiny vocabulary.
+states = [
+    "Ordered",
+    "Acknowledged",
+    "Shipped",
+    "Received",
+    "Restocked",
+    "Invoiced",
+]
+
+state_to_id = {state: i for i, state in enumerate(states)}
+id_to_state = {i: state for state, i in state_to_id.items()}
+vocabulary_size = len(states)
+
+# The real pattern the network will EVENTUALLY learn (that's next week).
+# We keep it here only so we can check how the untrained network does.
+true_next = {
+    "Ordered": "Acknowledged",
+    "Acknowledged": "Shipped",
+    "Shipped": "Received",
+    "Received": "Restocked",
+    "Restocked": "Invoiced",
+}
+
+
+def one_hot(index, size):
+    v = np.zeros(size)
+    v[index] = 1.0
+    return v
+
+
+def softmax(logits):
+    shifted = logits - np.max(logits)      # subtract max so exp() won't overflow
+    e = np.exp(shifted)
+    return e / np.sum(e)                    # turn raw scores into percentages
+
+
+# ---- The network's "brain": just random numbers. Nothing learned yet. ----
+np.random.seed(0)          # change this seed and watch the predictions change
+hidden_size = 8
+
+W1 = np.random.randn(vocabulary_size, hidden_size) * 0.5
+b1 = np.zeros(hidden_size)
+W2 = np.random.randn(hidden_size, vocabulary_size) * 0.5
+b2 = np.zeros(vocabulary_size)
+
+
+# ---- The forward pass. This is the whole lesson: numbers flowing forward. ----
+def forward(state):
+    x = one_hot(state_to_id[state], vocabulary_size)   # step 1: word  -> vector
+    hidden = np.tanh(x @ W1 + b1)                       # step 2: hidden layer
+    logits = hidden @ W2 + b2                           # step 3: raw scores
+    probs = softmax(logits)                             # step 4: scores -> %
+    return probs
+
+
+# ---- Look at ONE example in detail, so the flow is visible ----
+example = "Ordered"
+x = one_hot(state_to_id[example], vocabulary_size)
+hidden = np.tanh(x @ W1 + b1)
+logits = hidden @ W2 + b2
+probs = softmax(logits)
+
+print("ONE FORWARD PASS, STEP BY STEP   (input =", example, ")")
+print("-" * 58)
+print("input vector :", x)
+print("hidden vector:", np.round(hidden, 2))
+print("logits       :", np.round(logits, 2))
+print("probabilities:", np.round(probs, 2), " sum =", round(float(probs.sum()), 3))
+print()
+
+# ---- Now predict a next state for every state, and check against truth ----
+print("UNTRAINED PREDICTIONS")
+print("-" * 58)
+correct = 0
+for state in states[:-1]:                # skip "Invoiced": it has no next state
+    probs = forward(state)
+    guess = id_to_state[int(np.argmax(probs))]
+    confidence = float(probs.max())
+    truth = true_next[state]
+    mark = "OK " if guess == truth else "   "
+    if guess == truth:
+        correct += 1
+    print(f"{mark}{state:13s} -> guess: {guess:13s} ({confidence:4.0%})   truth: {truth}")
+
+print("-" * 58)
+print(f"Accuracy: {correct}/{len(states) - 1}   (this is basically luck)")

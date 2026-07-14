@@ -86,6 +86,8 @@ Input Data + Rules (written by engineer) → Output
 Input Data + Expected Output (examples) → Rules (learned by computer)
 ```
 
+<img src="./images/traditional_vs_ml.png" alt="Traditional Programming vs Machine Learning Diagram" width="600" />
+
 **Why it is needed.**
 Understanding this distinction is the single most important mental-model
 shift when moving from software engineering to AI engineering. Without
@@ -213,6 +215,7 @@ word-pairs. That set of word-pairs is the dataset.
 labels, duplicates, biased samples) can make a model worse. Quality
 matters as much as quantity.
 
+> A dataset is a collection of examples. In supervised learning, each example normally contains an input and a target label. Unsupervised datasets may contain only inputs.
 ---
 
 ## 2.5 Input and Output
@@ -609,6 +612,8 @@ Step 5: This vector is the neural network's input
         input_vector = [0, 1, 0, 0, 0]   shape: (5,)
 ```
 
+<img src="./images/word_representation.png" alt="Word Representation Pipeline Diagram" width="600" />
+
 **Why this pipeline exists.**
 Neural networks perform matrix multiplication. Matrix multiplication
 requires numerical inputs. A string like `"cat"` has no numerical
@@ -699,6 +704,8 @@ fails at runtime.
 | `[0, 1, 0, 0, 0]`        | `(5,)`   |
 | A 5×3 grid of numbers    | `(5, 3)` |
 | A 3×5 grid of numbers    | `(3, 5)` |
+
+<img src="./images/matrix_shapes.png" alt="Scalar Vector and Matrix Shapes Diagram" width="600" />
 
 **Connection to the assignment.**
 Every variable in the forward pass has a specific shape. Tracking shapes
@@ -806,6 +813,8 @@ Column 1: (0×0.4) + (1×0.5) + (0×0.6) + (0×0.8) + (0×1.0) = 0.5
 result = [0.2, 0.5]    shape: (2,)
 ```
 
+<img src="./images/matrix_multiplication.png" alt="Matrix Multiplication Row Selection Diagram" width="600" />
+
 Notice what happened: the one-hot vector effectively *selected row 1*
 from the weight matrix. This is an important insight — multiplying a
 one-hot vector by a matrix picks out the row corresponding to the hot
@@ -840,6 +849,8 @@ output.
 ```
 output = activation(w₁·x₁ + w₂·x₂ + ... + wₙ·xₙ + bias)
 ```
+
+<img src="./images/artificial_neuron.png" alt="Artificial Neuron Diagram" width="600" />
 
 **Why it is needed.**
 The neuron is the building block of every neural network. A single
@@ -1359,6 +1370,8 @@ Word
   → Argmax             → Predicted Index (scalar)
   → Vocabulary look-up → Predicted Word
 ```
+
+<img src="./images/forward_pass_flow.png" alt="Complete Forward Pass Flow Diagram" width="600" />
 
 Every arrow represents one computation. Every computation has a defined
 input shape and output shape.
