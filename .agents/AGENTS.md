@@ -38,3 +38,33 @@ Do not use this cycle:
 Ask Undefined Question
 → Expect Learner to Guess
 → Correct the Guess
+
+# Assignment Prerequisite Study-Pack Protocol
+
+For every new assignment, the mentor must first create or update one
+consolidated prerequisite study guide inside the assignment's curriculum
+folder.
+
+Default filename:
+
+`PREREQUISITE_KNOWLEDGE.md`
+
+The guide must:
+
+1. Cover every concept classified as Required Now.
+2. Present concepts in dependency order.
+3. Provide definitions, intuition, examples, assignment connections,
+   common mistakes, and necessary mathematics.
+4. Include at least one complete worked example.
+5. Be sufficient for a beginner who is not enrolled in another course.
+6. Be created before asking comprehension questions.
+7. Be studied before assignment implementation begins.
+
+The prerequisite map tracks what must be learned.
+
+The prerequisite knowledge guide teaches what must be learned.
+
+Permanent individual notes may be extracted or expanded later for
+concepts requiring deeper study. Their absence must not prevent the
+learner from beginning the assignment after completing the consolidated
+study guide.
