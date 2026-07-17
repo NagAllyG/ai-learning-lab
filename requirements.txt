@@ -1,0 +1,19 @@
+# Jupyter Environment
+jupyter
+jupyterlab
+notebook
+
+# Core Data Science / Math
+numpy
+pandas
+
+# Plotting & Visualization
+matplotlib
+seaborn
+
+# Machine Learning & Deep Learning
+scikit-learn
+torch
+
+# Utilities
+tqdm

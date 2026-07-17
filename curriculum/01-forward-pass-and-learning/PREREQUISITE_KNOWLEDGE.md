@@ -61,9 +61,8 @@ learned anything, so its prediction is essentially random. Later
 assignments will add the "learning from data" part.
 
 **Common misunderstanding.**
-"Machine learning replaces all programming." It does not. Machine
-learning replaces the *rule-discovery* step. You still write code to
-load data, build the network, run training, and deploy the result.
+> [!NOTE]
+> "Machine learning replaces all programming." It does not. Machine learning replaces the *rule-discovery* step. You still write code to load data, build the network, run training, and deploy the result.
 
 ---
 
@@ -130,10 +129,8 @@ the skeleton of one). It takes an input and produces an output using
 mathematical operations — no `if/else` anywhere.
 
 **Common misunderstanding.**
-"ML is always better than traditional programming." It is not. If you
-can express a rule precisely (e.g., "reject all orders over ₹10 lakh
-without manager approval"), traditional code is simpler, faster, and
-easier to debug.
+> [!NOTE]
+> "ML is always better than traditional programming." It is not. If you can express a rule precisely (e.g., "reject all orders over ₹10 lakh without manager approval"), traditional code is simpler, faster, and easier to debug.
 
 ---
 
@@ -174,9 +171,8 @@ will receive "the" and try to predict "cat". This is supervised learning
 because we know the correct next word.
 
 **Common misunderstanding.**
-"Supervised means a human watches the computer in real time." No. The
-"supervision" is the *labels* in the data, not a human sitting at the
-keyboard.
+> [!NOTE]
+> "Supervised means a human watches the computer in real time." No. The "supervision" is the *labels* in the data, not a human sitting at the keyboard.
 
 ---
 
@@ -211,11 +207,9 @@ The forward-pass code defines a small vocabulary and a set of
 word-pairs. That set of word-pairs is the dataset.
 
 **Common misunderstanding.**
-"More data is always better." Not necessarily. Bad data (incorrect
-labels, duplicates, biased samples) can make a model worse. Quality
-matters as much as quantity.
+> [!NOTE]
+> "More data is always better." Not necessarily. Bad data (incorrect labels, duplicates, biased samples) can make a model worse. Quality matters as much as quantity.
 
-> A dataset is a collection of examples. In supervised learning, each example normally contains an input and a target label. Unsupervised datasets may contain only inputs.
 ---
 
 ## 2.5 Input and Output
@@ -248,9 +242,8 @@ output is the network's predicted next word. The prediction may be wrong
 because the network has not learned yet.
 
 **Common misunderstanding.**
-"The output is always a single number." Not in this assignment. The
-network produces a score for *every* word in the vocabulary, then picks
-the word with the highest score.
+> [!NOTE]
+> "The output is always a single number." Not in this assignment. The network produces a score for *every* word in the vocabulary, then picks the word with the highest score.
 
 ---
 
@@ -289,9 +282,8 @@ Each word-pair in the code defines one feature (the input word) and one
 label (the expected output word).
 
 **Common misunderstanding.**
-"Features and labels must be different data types." They do not. Here
-both the feature and the label are words. The distinction is purely
-about *role*: what goes in vs. what comes out.
+> [!NOTE]
+> "Features and labels must be different data types." They do not. Here both the feature and the label are words. The distinction is purely about *role*: what goes in vs. what comes out.
 
 ---
 
@@ -326,9 +318,8 @@ mathematical operations: one-hot encoding → hidden layer → activation
 They start random — which is exactly why the first prediction is random.
 
 **Common misunderstanding.**
-"Model = code." Not exactly. The *code* defines the structure. The
-*model* is the structure + the learned parameter values. Same code with
-different parameters is a different model.
+> [!IMPORTANT]
+> "Model = code." Not exactly. The *code* defines the structure. The *model* is the structure + the learned parameter values. Same code with different parameters is a different model.
 
 ---
 
@@ -359,8 +350,8 @@ probability after softmax. Since the model has not been trained, this
 prediction is effectively a random guess.
 
 **Common misunderstanding.**
-"A confident prediction is a correct prediction." No. A model can output
-a very high probability for the wrong word. Confidence ≠ correctness.
+> [!WARNING]
+> "A confident prediction is a correct prediction." No. A model can output a very high probability for the wrong word. Confidence ≠ correctness.
 
 ---
 
@@ -406,9 +397,8 @@ vocabulary size determines the dimensions of the input vector, the
 output vector, and several weight matrices.
 
 **Common misunderstanding.**
-"The vocabulary can grow at inference time." No. If the model was built
-for a 5-word vocabulary, it cannot handle a 6th word without being
-rebuilt.
+> [!WARNING]
+> "The vocabulary can grow at inference time." No. If the model was built for a 5-word vocabulary, it cannot handle a 6th word without being rebuilt.
 
 ---
 
@@ -437,8 +427,8 @@ Each input to the network is one token (one word). The model predicts
 one token (one word) as output.
 
 **Common misunderstanding.**
-"Token always means word." In this assignment it does, but in GPT-style
-models a token can be part of a word (e.g., "un" + "believ" + "able").
+> [!NOTE]
+> "Token always means word." In this assignment it does, but in GPT-style models a token can be part of a word (e.g., "un" + "believ" + "able").
 
 ---
 
@@ -477,9 +467,8 @@ The code uses a dictionary (Python `dict`) to map each word to its
 index. This index is then used to construct the one-hot vector.
 
 **Common misunderstanding.**
-"The index encodes meaning." It does not. Index 0 is not "less than"
-index 4. The numbers are arbitrary identifiers, like primary keys in a
-database.
+> [!NOTE]
+> "The index encodes meaning." It does not. Index 0 is not "less than" index 4. The numbers are arbitrary identifiers, like primary keys in a database.
 
 ---
 
@@ -505,10 +494,8 @@ The token index is a scalar. The predicted index after argmax is a
 scalar. The learning rate (in later assignments) is a scalar.
 
 **Common misunderstanding.**
-"A one-element array is a scalar." Technically, a scalar has no
-dimensions while a one-element array has shape `(1,)`. In practice this
-distinction rarely matters, but be aware of it when debugging shape
-errors.
+> [!NOTE]
+> "A one-element array is a scalar." Technically, a scalar has no dimensions while a one-element array has shape `(1,)`. In practice this distinction rarely matters, but be aware of it when debugging shape errors.
 
 ---
 
@@ -525,6 +512,15 @@ Think of a single row in a database table or a 1-D array in C#:
 ```csharp
 float[] v = { 0.0f, 1.0f, 0.0f, 0.0f, 0.0f };
 ```
+
+**Example.**
+Vectors can hold any numbers — not just 0s and 1s:
+```text
+One-hot vector:    [0, 1, 0, 0, 0]          (binary — used for input encoding)
+Activation vector: [0.21, -0.85, 0.47]      (continuous — output of a hidden layer)
+Probability vector:[0.05, 0.65, 0.10, 0.15, 0.05]  (sums to 1.0 — output of softmax)
+```
+All three are vectors — ordered lists of numbers. The one-hot vector is a *special case*. Most vectors inside a neural network contain continuous (decimal) values.
 
 ---
 
@@ -585,7 +581,8 @@ Here is the step-by-step logic of how NumPy handles this under the hood:
 This convenient behavior means you do not have to write boilerplate code like `input_vector.reshape(1, -1)` before every layer just to satisfy matrix algebra. NumPy treats it as a row vector for the math but returns a clean flat vector for your code.
 
 **Common misunderstanding.**
-"A mathematical 5D vector must have shape `(5, 5)` or have `ndim = 5`." No. A 5D vector is a flat list of 5 numbers, which is represented in NumPy as shape `(5,)` and `ndim = 1`. 
+> [!IMPORTANT]
+> "A mathematical 5D vector must have shape `(5, 5)` or have `ndim = 5`." No. A 5D vector is a flat list of 5 numbers, which is represented in NumPy as shape `(5,)` and `ndim = 1`.
 
 ---
 
@@ -624,10 +621,8 @@ token index. This vector becomes the input to the first layer of the
 network.
 
 **Common misunderstanding.**
-"One-hot vectors capture word meaning." They do not. The vectors for
-"cat" and "kitten" are just as different as the vectors for "cat" and
-"airplane". One-hot encoding preserves identity but not semantics.
-Embeddings (a later assignment) solve this problem.
+> [!IMPORTANT]
+> "One-hot vectors capture word meaning." They do not. The vectors for "cat" and "kitten" are just as different as the vectors for "cat" and "airplane". One-hot encoding preserves identity but not semantics. Embeddings (a later assignment) solve this problem.
 
 ---
 
@@ -698,9 +693,8 @@ This is a 3×2 matrix: 3 rows, 2 columns.
 **Example.**
 
 ```
-A = [ 1  2 ]    shape: (2, 3) — 2 rows, 3 columns
+A = [ 1  2 ]    shape: (2, 2) — 2 rows, 2 columns
     [ 3  4 ]
-    
 
 A = [ 1  2  3 ]    shape: (2, 3) — 2 rows, 3 columns
     [ 4  5  6 ]
@@ -713,10 +707,8 @@ the hidden layer to the output layer are stored in a matrix of shape
 `(hidden_size, vocab_size)`.
 
 **Common misunderstanding.**
-"Matrix and array mean the same thing." In everyday code they are used
-interchangeably, but mathematically a matrix has specific rules about
-multiplication and transposition. When debugging neural networks, you
-think of them as matrices with shapes.
+> [!NOTE]
+> "Matrix and array mean the same thing." In everyday code they are used interchangeably, but mathematically a matrix has specific rules about multiplication and transposition. When debugging neural networks, you think of them as matrices with shapes.
 
 ---
 
@@ -765,9 +757,8 @@ probabilities:           (vocab_size,)
 ```
 
 **Common misunderstanding.**
-"Shape `(5,)` and shape `(1, 5)` are the same." They are not. `(5,)` is
-a 1-D vector. `(1, 5)` is a 2-D matrix with one row and five columns.
-Most code handles this gracefully, but it can cause subtle bugs.
+> [!WARNING]
+> "Shape `(5,)` and shape `(1, 5)` are the same." They are not. `(5,)` is a 1-D vector. `(1, 5)` is a 2-D matrix with one row and five columns. Most code handles this gracefully, but it can cause subtle bugs.
 
 ---
 
@@ -807,10 +798,41 @@ When the input vector is multiplied by the weight matrix, each column of
 the weight matrix is dot-producted with the input vector. This produces
 one hidden neuron's value.
 
-**Common misunderstanding.**
-"The dot product is the same as element-wise multiplication." Element-
-wise multiplication produces a vector; the dot product produces a
-scalar. The dot product includes the summation step.
+**Common misunderstanding: Dot Product vs. Element-wise Multiplication.**
+"The dot product is the same as element-wise multiplication." They are related, but fundamentally different operations with different outputs and use-cases.
+
+**Element-wise Multiplication (Hadamard Product):**
+Multiplies corresponding elements together but *keeps them separate*.
+- **Output:** A vector of the same size.
+- **Example:** 
+  ```text
+  a = [1, 2, 3]
+  b = [4, 5, 6]
+  
+  element-wise = [1×4, 2×5, 3×6]
+               = [4, 10, 18]
+  ```
+- **When it is used:** Used when you want to apply a mask (e.g., zeroing out certain values), scale individual features independently, or combine two vectors where each position represents an independent concept (e.g., gating mechanisms).
+
+**Dot Product:**
+Multiplies corresponding elements together AND *sums them all up*.
+- **Output:** A single scalar (number).
+- **Example:**
+  ```text
+  a = [1, 2, 3]
+  b = [4, 5, 6]
+  
+  dot product = (1×4) + (2×5) + (3×6)
+              = 4 + 10 + 18
+              = 32
+  ```
+- **When it is used:** Used when you need to calculate an aggregate "score" or measure "similarity" between two vectors. It is the core operation of fully connected layers, aggregating multiple inputs into a single neuron's activation.
+
+**Visual Summary:**
+```text
+Element-wise:  [1, 2, 3] ⊙ [4, 5, 6]  ➔  [4, 10, 18]   (Vector)
+Dot Product:   [1, 2, 3] · [4, 5, 6]  ➔  32            (Scalar)
+```
 
 ---
 
@@ -822,9 +844,11 @@ matrix. Each element of the result is the dot product of one row from
 the first matrix and one column from the second matrix.
 
 **The shape rule:**
-If matrix A has shape `(m, n)` and matrix B has shape `(n, p)`, the
-result has shape `(m, p)`. The inner dimensions (`n` and `n`) must
+If matrix $A$ has shape $(m, n)$ and matrix $B$ has shape $(n, p)$, the
+result has shape $(m, p)$. The inner dimensions ($n$ and $n$) must
 match.
+
+$$A_{(m \times n)} \times B_{(n \times p)} = C_{(m \times p)}$$
 
 **Why it is needed.**
 Matrix multiplication is how a neural network transforms its input at
@@ -855,7 +879,20 @@ Column 1: (0×0.4) + (1×0.5) + (0×0.6) + (0×0.8) + (0×1.0) = 0.5
 result = [0.2, 0.5]    shape: (2,)
 ```
 
-<img src="./images/matrix_multiplication.png" alt="Matrix Multiplication Row Selection Diagram" width="600" />
+> [!NOTE]
+> **Note on shapes:** As detailed in Section 3.5, programming libraries like NumPy automatically treat a 1-D vector of shape `(5,)` as a row vector of shape `(1, 5)` during matrix multiplication. Thus, the inner dimensions `(1, 5) × (5, 2)` do match! The mathematical result `(1, 2)` is then cleanly returned as a flat `(2,)` vector.
+
+**Visual representation (Corrected Shapes):**
+```text
+   Input Vector                    Weight Matrix (W)               Output Vector
+   Shape: (1, 5)                     Shape: (5, 2)                 Shape: (1, 2)
+
+                         [ 0.1   0.4 ]
+                         [ 0.2   0.5 ] ⟵ (Row 1 selected)
+[ 0,  1,  0,  0,  0 ]  × [ 0.3   0.6 ]                      =  [ 0.2,  0.5 ]
+                         [ 0.7   0.8 ]
+                         [ 0.9   1.0 ]
+```
 
 Notice what happened: the one-hot vector effectively *selected row 1*
 from the weight matrix. This is an important insight — multiplying a
@@ -870,298 +907,287 @@ The forward pass performs two matrix multiplications:
    scores (logits).
 
 **Common misunderstanding.**
-"Matrix multiplication is commutative (A × B = B × A)." It is not.
-Order matters. A × B and B × A produce different results (and may not
-even be compatible).
+> [!WARNING]
+> "Matrix multiplication is commutative ($A \times B = B \times A$)." It is not. Order matters. $A \times B$ and $B \times A$ produce different results (and may not even be compatible).
 
 ---
 
 # 5. Neural-Network Building Blocks
 
-## 5.1 Artificial Neuron
+This section breaks down the fundamental components of a neural network, from a single artificial neuron up to deep multi-layer architectures.
+
+---
+
+## 5.1 The Artificial Neuron (The Atomic Unit)
 
 **Definition.**
-An artificial neuron is a small computational unit that takes one or
-more inputs, multiplies each input by a weight, sums the results, adds a
-bias, and passes the total through an activation function to produce one
-output.
+An artificial neuron is the basic computational unit of a neural network. It takes one or more inputs, multiplies each by a corresponding weight, sums them up, adds a bias, and passes the result through an activation function to produce a single output.
 
-**Formula:**
+**Mathematical Formula:**
+$$\text{Output} = f\left(\sum_{i=1}^{n} w_i x_i + b\right) = f(w_1 x_1 + w_2 x_2 + \dots + w_n x_n + b)$$
 
-```
-output = activation(w₁·x₁ + w₂·x₂ + ... + wₙ·xₙ + bias)
-```
+Where $x_i$ are the inputs, $w_i$ are the weights, $b$ is the bias, and $f$ is the activation function.
 
 <img src="./images/artificial_neuron.png" alt="Artificial Neuron Diagram" width="600" />
 
 **Why it is needed.**
-The neuron is the building block of every neural network. A single
-neuron can learn a simple linear boundary. Groups of neurons (layers)
-can learn complex, non-linear patterns.
+A single neuron acts as a simple classifier (like a straight line separating two classes). Stacking them in groups and layers allows the network to learn extremely complex patterns that a single line cannot capture.
 
 **Intuition.**
-Think of a neuron as a tiny decision-maker. It receives several signals
-(inputs), weighs their importance (weights), makes a combined decision
-(weighted sum + bias), and outputs a signal (activation).
+Think of a neuron as a tiny decision-maker. It receives several signals (inputs), weighs their importance (weights), makes a combined decision (weighted sum + bias), and outputs a signal (activation).
 
 **Example.**
+Imagine a neuron deciding if you should go for a run:
+*   **Inputs ($x$):** Is it sunny? ($x_1 = 1.0$), Is it hot? ($x_2 = 0.8$)
+*   **Weights ($w$):** How much you like sun ($w_1 = 0.5$), How much you hate heat ($w_2 = -0.4$)
+*   **Bias ($b$):** Your general baseline desire to run ($b = 0.2$)
 
-```
-Inputs:  x₁ = 0.5, x₂ = 0.3
-Weights: w₁ = 0.8, w₂ = 0.2
-Bias:    b  = 0.1
-
-Weighted sum = (0.5 × 0.8) + (0.3 × 0.2) + 0.1
-             = 0.4 + 0.06 + 0.1
-             = 0.56
-
-Output (before activation) = 0.56
-```
+$$\text{Weighted Sum} = (1.0 \times 0.5) + (0.8 \times -0.4) + 0.2 = 0.5 - 0.32 + 0.2 = 0.38$$
+If we pass this through a simple activation threshold (e.g., if sum > 0, output 1), the output is 1 (you go for a run!).
 
 **Connection to the assignment.**
-The hidden layer in the forward pass contains multiple neurons. Each
-hidden neuron receives the entire input vector, multiplies it by its
-weights, adds its bias, and outputs one value.
+Each hidden neuron in your assignment's network will receive the entire one-hot input vector, multiply it by its weights, add its bias, and output a single activation value.
 
 **Common misunderstanding.**
-"An artificial neuron mimics a biological neuron exactly." It does not.
-It is a loose mathematical inspiration, not a biological simulation.
+> [!WARNING]
+> **Biological vs. Artificial Neurons:** Artificial neurons are loosely inspired by biological brain cells, but they are vastly simplified mathematical approximations, not biological simulations. Don't take the biological analogy too literally!
 
 ---
 
-## 5.2 Weights
+## 5.2 Weights (Learnable Importance)
 
 **Definition.**
-Weights are the learnable parameters that determine how much influence
-each input has on a neuron's output. They are stored in weight matrices.
+Weights are learnable parameters that determine the strength and direction of the connection between two neurons. They control how much influence an input feature has on the next neuron's output.
 
 **Why they are needed.**
-Weights are what the model *learns*. Before training, they are random.
-After training, they encode the patterns discovered in the data. Without
-weights, every input would produce the same output.
+Without weights, a network could only perform fixed, hardcoded math. The weights are the "knowledge" of the network—they start out random and are gradually adjusted during training to capture patterns in your dataset.
 
 **Intuition.**
-Think of weights as volume knobs on a mixing console. Each knob
-controls how loud one channel (input) is in the final mix (output).
-Training adjusts these knobs until the mix sounds right (the model's
-predictions are accurate).
+Think of weights as volume knobs on a mixing console. Each knob controls how loud one input channel is in the final mix. Training is the process of adjusting these knobs until the music sounds perfect.
 
 **Example.**
-If `weight = 0.9`, the input has a strong influence.
-If `weight = 0.01`, the input is nearly ignored.
-If `weight = -0.5`, the input has a moderate *negative* influence
-(pushing the output down).
+*   A weight of `+1.5` has a strong positive influence (increases the output).
+*   A weight of `+0.02` has almost no influence (ignored).
+*   A weight of `-0.8` has a strong negative influence (decreases the output).
 
 **Connection to the assignment.**
-The forward pass has two weight matrices:
-- `input_to_hidden_weights`: shape `(vocab_size, hidden_size)`
-- `hidden_to_output_weights`: shape `(hidden_size, vocab_size)`
-
-These are initialised randomly and are the values that would change
-during training.
+Your model stores all weights in 2-D matrices:
+*   `input_to_hidden_weights`: Connects the input words to the hidden neurons.
+*   `hidden_to_output_weights`: Connects the hidden activations to the final word predictions.
 
 **Common misunderstanding.**
-"Higher weight = better." A negative weight is not bad — it simply means
-that input pushes the output in the opposite direction. The sign carries
-information.
+> [!NOTE]
+> **Sign vs. Magnitude:** A negative weight is not "bad" or "weak." The magnitude (absolute value) determines the *strength* of the relationship, while the sign (+/-) determines the *direction*.
 
 ---
 
-## 5.3 Bias
+## 5.3 Bias (Flexible Shifts)
 
 **Definition.**
-A bias is an additional learnable parameter added to the weighted sum
-before the activation function. Each neuron has its own bias value.
-
-**Formula with bias:**
-
-```
-z = (inputs × weights) + bias
-```
+A bias is a learnable offset added to the weighted sum before the activation function. It allows the neuron to shift its activation threshold up or down.
 
 **Why it is needed.**
-Without bias, the neuron's output must pass through the origin
-(zero input always produces zero output). The bias shifts the output,
-giving the neuron the flexibility to activate even when all inputs are
-zero.
+Without bias, a neuron's activation function must pass through the origin (i.e., if all inputs are zero, the output is forced to be zero). A bias allows the network to shift the activation function, giving it the flexibility to activate even when all inputs are zero.
 
-**Intuition (C# analogy).**
-Think of a linear equation: `y = mx + b`. The `m` is the weight and the
-`b` is the bias. Without `b`, the line must pass through the origin. The
-bias lets the line shift up or down.
+**Intuition.**
+Think of the linear equation $y = mx + c$.
+*   $m$ (weight) controls the *slope* of the line.
+*   $c$ (bias) controls the *intercept* (shifts the line up or down).
+Without $c$, the line is locked to the center $(0,0)$.
+
+```text
+    Locked at Origin (No Bias)                 Shifted (With Bias)
+             ▲                                        ▲
+             │  /                                     │  /
+             │ /                                      │ /  (Shifted up)
+      ───────┼───────▶                         ───────┼───────▶
+            /│                                 /      │
+           / │                                /       │
+```
 
 **Example.**
-
-```
-weighted_sum = 0.0   (all inputs happen to cancel out)
-bias         = 0.3
-
-with bias:    z = 0.0 + 0.3 = 0.3   → neuron can still activate
-without bias: z = 0.0               → neuron is stuck at zero
-```
+If all inputs happen to be zero, the weighted sum is `0.0`.
+*   **Without bias:** The output is `0.0`. The neuron is stuck and cannot activate.
+*   **With bias = +0.4:** The output is `0.4`. The neuron can now cross the activation threshold and fire.
 
 **Connection to the assignment.**
-The forward pass has two bias vectors:
-- `hidden_bias`: shape `(hidden_size,)` — added after
-  input-to-hidden multiplication.
-- `output_bias`: shape `(vocab_size,)` — added after
-  hidden-to-output multiplication.
+Biases are stored as 1-D vectors and added to the matrix multiplications:
+*   `hidden_bias` (added after input-to-hidden layer).
+*   `output_bias` (added after hidden-to-output layer).
 
 **Common misunderstanding.**
-"Bias is optional." Technically the network can train without bias, but
-removing it reduces the model's capacity and can prevent it from
-learning certain patterns.
+> [!IMPORTANT]
+> **Bias is Essential:** While a network can technically be trained without biases, doing so severely limits its mathematical capacity and makes it fail on simple offset tasks.
 
 ---
 
-## 5.4 Random Initialization
+## 5.4 Random Initialization (Symmetry Breaking)
 
 **Definition.**
-Random initialization means setting all weights and biases to small
-random numbers before training begins.
+Random initialization is the practice of setting all weights and biases to small random numbers before training begins, rather than setting them all to zero.
 
 **Why it is needed.**
-If all weights started at zero, every neuron would compute the same
-value. They would all learn the same thing and the network would
-effectively have only one neuron. Random initialization breaks this
-symmetry so each neuron can specialise.
+If all weights are initialized to the same value (like zero), every neuron in a layer will compute the exact same output and receive the exact same gradients during training. They would update in lockstep, making them identical. We initialize randomly to **break this symmetry**, forcing different neurons to look for different features.
 
 **Intuition.**
-Imagine sending ten detectives to investigate a crime. If they all start
-at the same location and follow the same clues, they cover the same
-ground. If each starts at a different random location, they explore
-different parts of the city and collectively find more evidence.
+Imagine sending ten detectives to investigate a crime. If they all start at the same spot and follow the same clues, they cover the exact same ground. If you start them at different random locations, they explore different parts of the city and solve the case faster.
 
 **Example.**
-
+In NumPy, we initialize weights randomly using:
 ```python
-weights = np.random.randn(5, 3) * 0.1
+weights = np.random.randn(input_size, output_size) * 0.1
 ```
-
-This produces a 5×3 matrix where each value is a small random number
-drawn from a normal distribution.
+This draws values from a normal distribution and scales them down so the weights start small.
 
 **Connection to the assignment.**
-The forward-pass code initialises all weights randomly. This is why the
-first prediction is essentially a random guess — the weights have not
-been trained.
+Your assignment's code initializes weights randomly. Because they start random, the initial forward pass predictions are also random guesses.
 
 **Common misunderstanding.**
-"Random initialization means the model is broken." It is not broken — it
-is just untrained. The random values are a *starting point*, not a bug.
+> [!TIP]
+> **Untrained is not Broken:** A model outputting garbage predictions at startup is not a bug; it is simply in its initial randomly initialized state.
 
 ---
 
-## 5.5 Hidden Layer
+## 5.5 Hidden Layer (Representation Learning)
 
 **Definition.**
-A hidden layer is a group of neurons between the input layer and the
-output layer. It is called "hidden" because its values are not directly
-visible in the input or output — they are intermediate computations.
+A hidden layer is a group of neurons situated between the input layer and the output layer. Its outputs are intermediate computations not directly visible to the external world.
 
 **Why it is needed.**
-A single layer (input → output) can only learn linear relationships.
-Hidden layers allow the network to learn non-linear patterns — patterns
-that are curves, not straight lines.
-
-**Intuition (API analogy).**
-Think of a three-tier architecture:
-
-```
-Client (Input) → Business Logic (Hidden) → Database (Output)
-```
-
-The business logic layer transforms the raw request into something the
-database can use. Similarly, the hidden layer transforms the raw input
-into a more useful representation before passing it to the output layer.
-
-**Example.**
-If the input vector has 5 elements and the hidden layer has 3 neurons,
-then:
-- Input shape: `(5,)`
-- Weight matrix shape: `(5, 3)`
-- Hidden layer output shape: `(3,)`
-
-The 5-element input is transformed into a 3-element intermediate
-representation.
-
-**Connection to the assignment.**
-The forward-pass code has exactly one hidden layer. The computation is:
-
-```
-hidden = activation(input_vector × input_to_hidden_weights + hidden_bias)
-```
-
-**Common misunderstanding.**
-"More hidden layers are always better." Adding layers makes the network
-harder to train. The right number of layers depends on the problem
-complexity. For this assignment, one hidden layer is sufficient.
-
----
-
-## 5.6 Activation Function
-
-**Definition.**
-An activation function is a mathematical function applied to a neuron's
-output after the weighted sum + bias. It introduces non-linearity into
-the network.
-
-**Why it is needed.**
-Without an activation function, stacking multiple layers is pointless —
-the result is still a linear transformation (you could collapse all
-layers into a single multiplication). The activation function makes each
-layer meaningfully different from the next.
+A single-layer network (input → output) can only learn linear relationships. Stacking hidden layers allows the network to transform the input space step-by-step, building a richer internal representation of the data and enabling it to solve non-linear problems.
 
 **Intuition.**
-Think of an activation function as a filter or a gate. The neuron
-computes a raw score, and the activation function decides how to reshape
-that score before passing it on.
-
-Without activation functions, a 100-layer network would be
-mathematically equivalent to a single-layer network. It is the non-
-linearity that gives depth its power.
+Think of a classic three-tier software architecture:
+```text
+Client (Input Layer) ──▶ Business Logic (Hidden Layer) ──▶ Database (Output Layer)
+```
+The Business Logic layer takes raw user requests and processes them into a clean format before sending them to the database. Similarly, the hidden layer transforms raw input features into higher-level features before generating predictions.
 
 **Example.**
-Common activation functions:
-
-| Function | Formula           | Output range    |
-|----------|-------------------|-----------------|
-| Sigmoid  | 1 / (1 + e^(-x))  | (0, 1)          |
-| tanh     | (e^x - e^(-x)) / (e^x + e^(-x)) | (-1, 1) |
-| ReLU     | max(0, x)         | [0, ∞)          |
+If the input vector has 5 elements and the hidden layer has 3 neurons:
+1. Input is a 1-D vector of shape `(5,)`.
+2. It is multiplied by a `(5, 3)` weight matrix.
+3. The hidden layer outputs a 1-D vector of shape `(3,)`.
+The raw 5-dimensional input is compressed into a 3-dimensional representation.
 
 **Connection to the assignment.**
-The forward pass uses `tanh` as its activation function on the hidden
-layer.
-
-**Common misunderstanding.**
-"The activation function is applied to the output layer too." In this
-assignment, the output layer uses *softmax*, which serves a different
-purpose (converting raw scores to probabilities). The term "activation
-function" usually refers to the function applied in hidden layers.
+The forward pass uses one hidden layer with a shape of `(hidden_size,)`.
 
 ---
 
-## 5.7 tanh
+## 5.6 Parameter Shapes and Routing (Putting it Together)
+
+Now that we understand **Neurons, Weights, Biases, and Hidden Layers**, let's see how these pieces fit together mathematically in a network.
+
+### How Shapes are Determined
+The shape of a weight matrix connecting Layer A to Layer B is always strictly:
+`W Shape: (Number of Incoming Neurons in A, Number of Outgoing Neurons in B)`
+
+The shape of the bias vector for the destination layer is always:
+`B Shape: (Number of Outgoing Neurons in B,)`
+
+#### Visualizing a Single Connection Layer
+Let's see what this looks like for a layer that takes **5 input features** and routes them to a **hidden layer of 3 neurons**:
+
+```text
+    Incoming Layer A (Inputs)                    Outgoing Layer B (Hidden Neurons)
+          (5 features)                                     (3 neurons)
+
+                                                ╭── Neuron 1 (Has 5 unique weights + 1 bias)
+    [ F1, F2, F3, F4, F5 ]  ──────────────────▶ ├── Neuron 2 (Has 5 unique weights + 1 bias)
+                                                ╰── Neuron 3 (Has 5 unique weights + 1 bias)
+
+    Weight Matrix Shape: (5, 3)                Bias Vector Shape: (3,)
+    (5 inputs mapped to 3 neurons)             (One bias per destination neuron)
+```
+
+To compute this entire layer in one operation, we use Matrix Multiplication:
+$$\text{Hidden Activations} = \text{Inputs} \times W + B$$
+$$\text{Shapes: } (1, 5) \times (5, 3) + (3,) \rightarrow (1, 3)$$
+
+---
+
+### Chaining Multiple Layers (Deep Learning)
+Deep Learning is simply the process of chaining multiple hidden layers together. The output dimension of one layer's matrix multiplication must perfectly match the input dimension of the next layer.
+
+#### Visualizing a Multi-Layer Network with Weights and Biases
+Let's trace the shapes through a network with an input size of 5, four hidden layers (sizes 3, 6, 5, and 3), and an output size of 5.
+
+```text
+    Data Flow               Weight Matrix connecting layers       Bias Vector for destination layer
+ 
+ [ L1: Input ]               
+  (5 features)               W1 Shape: (5, 3)                      B1 Shape: (3,)
+       │
+       ▼
+ [ L2: Hidden ]              
+  (3 neurons)                W2 Shape: (3, 6)                      B2 Shape: (6,)
+       │
+       ▼
+ [ L3: Hidden ]              
+  (6 neurons)                W3 Shape: (6, 5)                      B3 Shape: (5,)
+       │
+       ▼
+ [ L4: Hidden ]              
+  (5 neurons)                W4 Shape: (5, 3)                      B4 Shape: (3,)
+       │
+       ▼
+ [ L5: Hidden ]              
+  (3 neurons)                W5 Shape: (3, 5)                      B5 Shape: (5,)
+       │
+       ▼
+ [ L6: Output ]              
+  (5 predictions)            
+```
+
+Notice two critical rules in action:
+1. **Weight Matrix Inner Dimensions Match:** The output dimension of `W1` is 3, which perfectly matches the input dimension of `W2`. This chain of matrix multiplications allows the data to flow flawlessly from the raw input all the way to the final prediction.
+2. **Bias Shape Matches Destination Neurons:** The shape of a layer's Bias vector is always exactly equal to the number of neurons in that destination layer. Every destination neuron gets exactly one bias to add to its weighted sum. For example, L3 has 6 neurons, so its bias vector `B2` is shape `(6,)`. Note that the Input Layer (L1) has no bias, because no computation happens there!
+
+---
+
+## 5.7 Activation Function
 
 **Definition.**
-`tanh` (hyperbolic tangent) is an activation function that squashes any
-input value into the range `(-1, 1)`.
+An activation function is a mathematical function applied to a neuron's output after the weighted sum and bias have been calculated. It introduces non-linearity into the network.
+
+**Why it is needed.**
+Without an activation function, stacking multiple layers is useless. A linear equation times a linear equation is still just a linear equation. Without non-linearity, a 100-layer network would be mathematically equivalent to a single-layer network. Activation functions allow the network to learn complex, curved boundaries.
+
+**Intuition.**
+Think of an activation function as a filter or a gate. The neuron computes a raw score, and the activation function decides how to reshape that score before passing it on.
+
+**Example.**
+Here are the three most common activation functions in deep learning:
+
+| Function | Formula | Output Range | Key Characteristic |
+| :--- | :--- | :--- | :--- |
+| **Sigmoid** | $\frac{1}{1 + e^{-x}}$ | $(0, 1)$ | Excellent for binary classification / probability outputs. |
+| **tanh** | $\frac{e^x - e^{-x}}{e^x + e^{-x}}$ | $(-1, 1)$ | Zero-centered, which helps keep values balanced during training. |
+| **ReLU** | $\max(0, x)$ | $[0, \infty)$ | Extremely fast to compute, avoids vanishing gradients, standard for deep networks. |
+
+**Connection to the assignment.**
+The forward pass uses `tanh` as its activation function on the hidden layer.
+
+**Common misunderstanding.**
+> [!WARNING]
+> **Output Activation:** The term "activation function" usually refers to the functions applied in hidden layers (like ReLU or tanh). The function applied to the final output layer (like Softmax) is also technically an activation function, but it serves a different role (converting raw scores to probability distributions).
+
+---
+
+## 5.8 tanh
+
+**Definition.**
+`tanh` (hyperbolic tangent) is an activation function that squashes any input value into the range `(-1, 1)`.
 
 **Formula:**
-
-```
-tanh(x) = (eˣ - e⁻ˣ) / (eˣ + e⁻ˣ)
-```
+$$\tanh(x) = \frac{e^x - e^{-x}}{e^x + e^{-x}}$$
 
 **Why it is needed.**
-It introduces non-linearity (essential, as discussed above) and also
-centres the output around zero. This zero-centred property can help
-during training because it keeps values balanced.
+It introduces non-linearity (essential, as discussed above) and also centres the output around zero. This zero-centred property can help during training because it keeps values balanced.
 
 **Intuition.**
-Imagine a thermostat that converts any temperature reading into a value
-between -1 and 1:
+Imagine a thermostat that converts any temperature reading into a value between -1 and 1:
 - Very cold → close to -1
 - Room temperature → close to 0
 - Very hot → close to 1
@@ -1169,30 +1195,22 @@ between -1 and 1:
 No matter how extreme the input, the output stays bounded.
 
 **Example.**
-
-```
-tanh(-100) ≈ -1.0
-tanh(-1)   ≈ -0.76
-tanh(0)    =  0.0
-tanh(1)    ≈  0.76
-tanh(100)  ≈  1.0
-```
+*   $\tanh(-100) \approx -1.0$
+*   $\tanh(-1) \approx -0.76$
+*   $\tanh(0) = 0.0$
+*   $\tanh(1) \approx 0.76$
+*   $\tanh(100) \approx 1.0$
 
 **Connection to the assignment.**
-After `input_vector × input_to_hidden_weights + hidden_bias`, the
-forward pass applies `tanh` to every element:
-
+After `input_vector × input_to_hidden_weights + hidden_bias`, the forward pass applies `tanh` to every element:
+```python
+hidden_activation = np.tanh(hidden_pre_activation)
 ```
-hidden_activation = tanh(hidden_pre_activation)
-```
-
 This squashes the hidden layer values into `(-1, 1)`.
 
 **Common misunderstanding.**
-"tanh output can be exactly -1 or 1." It cannot. It approaches -1 and 1
-asymptotically (gets infinitely close but never reaches them). In
-practice, for very large or very small inputs, it is close enough that
-floating-point arithmetic rounds to -1 or 1.
+> [!NOTE]
+> **Asymptotic Limits:** `tanh` outputs can never be *exactly* -1 or 1 mathematically—they only approach those limits asymptotically. However, computer float-point arithmetic will round them to -1.0 or 1.0 for very large or small inputs.
 
 ---
 
@@ -1244,9 +1262,8 @@ logits = hidden_activation × hidden_to_output_weights + output_bias
 Shape: `(vocab_size,)`.
 
 **Common misunderstanding.**
-"A logit of 2.1 means 210% confidence." Logits have no bounded meaning
-on their own. Their magnitude only becomes meaningful *relative to each
-other* after softmax.
+> [!NOTE]
+> "A logit of 2.1 means 210% confidence." Logits have no bounded meaning on their own. Their magnitude only becomes meaningful *relative to each other* after softmax.
 
 ---
 
@@ -1258,22 +1275,20 @@ distribution — a vector of positive numbers that sum to exactly 1.
 
 **Formula:**
 
-```
-softmax(xᵢ) = eˣⁱ / Σⱼ eˣʲ
-```
+$$\text{softmax}(x_i) = \frac{e^{x_i}}{\sum_j e^{x_j}}$$
 
-For each element: raise *e* (≈ 2.718) to the power of the element, then
-divide by the sum of *e* raised to the power of *all* elements.
+For each element: raise $e$ (Euler's number, ≈ 2.718) to the power of the element, then divide by the sum of $e$ raised to the power of *all* elements.
+
+**Why $e$ (Euler's number)?**
+You might wonder: why not just use the raw numbers directly? Two key reasons:
+1. **Makes everything positive:** Logits can be negative (e.g., -2.5), but probabilities cannot be negative. Raising $e$ to *any* power always gives a positive number ($e^{-2.5} = 0.082$), so this step guarantees all values are positive.
+2. **Amplifies differences:** $e^x$ grows exponentially, so larger logits get disproportionately larger values. This makes the model's "favourite" choice stand out more clearly in the final probabilities.
 
 **Why it is needed.**
-Logits are unbounded and hard to interpret. Softmax converts them into
-probabilities so we can say "the network is 65% confident the next word
-is 'cat'."
+Logits are unbounded and hard to interpret. Softmax converts them into probabilities so we can say "the network is 65% confident the next word is 'cat'."
 
 **Intuition.**
-Think of softmax as a "normalise and make positive" function. It takes
-any list of numbers (positive, negative, mixed) and converts them into a
-valid probability distribution.
+Think of softmax as a "normalise and make positive" function. It takes any list of numbers (positive, negative, mixed) and converts them into a valid probability distribution.
 
 **Example.**
 
@@ -1302,10 +1317,8 @@ probabilities = softmax(logits)    shape: (vocab_size,)
 ```
 
 **Common misunderstanding.**
-"The highest probability is always correct." No. On an untrained model,
-the probabilities are determined by random weights. A high probability
-means the random numbers happened to favour that word, not that the
-model "knows" the answer.
+> [!WARNING]
+> "The highest probability is always correct." No. On an untrained model, the probabilities are determined by random weights. A high probability means the random numbers happened to favour that word, not that the model "knows" the answer.
 
 ---
 
@@ -1340,10 +1353,8 @@ The softmax output in the forward pass is a probability distribution
 over the vocabulary: one probability for each word.
 
 **Common misunderstanding.**
-"A uniform distribution means the model is broken." A uniform
-distribution (e.g., `[0.2, 0.2, 0.2, 0.2, 0.2]` for 5 words) just
-means the model has no preference. This is expected for an untrained
-model with balanced random weights.
+> [!NOTE]
+> "A uniform distribution means the model is broken." A uniform distribution (e.g., `[0.2, 0.2, 0.2, 0.2, 0.2]` for 5 words) just means the model has no preference. This is expected for an untrained model with balanced random weights.
 
 ---
 
@@ -1386,8 +1397,8 @@ predicted_word  = vocabulary[predicted_index]
 This is how the network produces its final prediction.
 
 **Common misunderstanding.**
-"Argmax returns the highest value." It returns the *index* (position) of
-the highest value. If you want the value itself, that is just `max`.
+> [!NOTE]
+> "Argmax returns the highest value." It returns the *index* (position) of the highest value. If you want the value itself, that is just `max`.
 
 ---
 
@@ -1707,6 +1718,9 @@ the model has no real preference — it is guessing.
 | Inference               | Running data through a model to get a prediction. |
 | Shape tracing           | Tracking the dimensions of every value through the network. |
 | Untrained model         | A model with random weights that has not yet learned from data. |
+| Element-wise multiplication | Multiplying corresponding elements of two vectors, producing a vector of the same size. Also called Hadamard product. |
+| Hyperparameter          | A configuration value chosen by the engineer (e.g., hidden layer size), not learned from data. |
+| Deep learning / Deep neural network | A neural network with multiple hidden layers chained together. |
 
 ---
 
@@ -1729,21 +1743,24 @@ If you can answer these comfortably, you are ready for the assignment.
 **Mathematical foundations:**
 9. What shape results from multiplying a `(5,)` vector by a `(5, 3)` matrix?
 10. What does multiplying a one-hot vector by a weight matrix effectively do?
+11. What is the difference between element-wise multiplication and the dot product? What does each one output?
 
 **Neural-network building blocks:**
-11. What would happen if all weights were initialised to zero instead of randomly?
-12. Why does the hidden layer apply tanh?
-13. What range of values can tanh produce?
+12. What would happen if all weights were initialised to zero instead of randomly?
+13. Why does the hidden layer apply tanh?
+14. What range of values can tanh produce?
+15. If Layer A has 10 neurons and Layer B has 4 neurons, what is the shape of the weight matrix and bias vector connecting them?
 
 **Producing a prediction:**
-14. Are logits probabilities? Why or why not?
-15. What does softmax guarantee about its output?
-16. Does argmax return a value or an index?
+16. Are logits probabilities? Why or why not?
+17. What does softmax guarantee about its output?
+18. Why does softmax use Euler's number ($e$) instead of raw numbers?
+19. Does argmax return a value or an index?
 
 **The complete forward pass:**
-17. Can you trace the shape of every value from input to output?
-18. Why is the untrained model's first prediction essentially random?
-19. What would need to change for the model to make accurate predictions?
+20. Can you trace the shape of every value from input to output?
+21. Why is the untrained model's first prediction essentially random?
+22. What would need to change for the model to make accurate predictions?
 
 ---
 
@@ -1769,3 +1786,204 @@ process (training) is added in a future assignment.
 
 You do not need to understand any of these before starting the
 forward-pass assignment.
+
+---
+
+# 12. Vanishing and Exploding Gradients
+
+**Definition.**
+The "Gradient" is the learning signal that tells a neural network how to update its weights. 
+- **Vanishing Gradients** occur when this signal gets smaller and smaller as it travels backwards through the network, eventually shrinking to exactly zero. When it hits zero, the network completely stops learning.
+- **Exploding Gradients** occur when this signal gets larger and larger, eventually growing to infinity (or `NaN` - Not a Number). When this happens, the network's math breaks and it becomes completely unstable.
+
+**Why it is needed.**
+Understanding this phenomenon is required to understand why we carefully initialize our weights as small decimals (like multiplying by `0.1`) and why we choose specific activation functions like ReLU or Tanh. Almost all modern deep learning architecture decisions exist specifically to prevent gradients from vanishing or exploding!
+
+**Intuition (The Telephone Game).**
+Imagine a line of 100 people playing the Telephone Game. 
+- **Vanishing**: If every person whispers just 10% quieter than the person before them, by the 20th person, it is absolute silence. The message is completely lost.
+- **Exploding**: If every person shouts 10% louder than the person before them, by the 20th person, the volume is so deafening that the eardrums burst.
+
+**Real-world Example (Compound Interest).**
+If you multiply fractions, they shrink exponentially: $0.5 \times 0.5 \times 0.5 = 0.125$.
+If you multiply whole numbers, they grow exponentially: $2.0 \times 2.0 \times 2.0 = 8.0$.
+Because a Neural Network is essentially a long chain of multiplications, a chain of numbers slightly less than 1 will vanish to 0, and a chain of numbers slightly greater than 1 will explode to infinity.
+
+**Small Numerical Example (The Tanh Problem).**
+In our forward pass, we use the `Tanh` activation function. `Tanh` squashes numbers between `-1` and `1`. 
+If our initial weights are large (say, 5.0 instead of 0.5), the math flowing into the Tanh function will be a large number (like `10.0`). 
+The `Tanh` of `10.0` is `0.999999995`. 
+If the math wants to adjust the weight to make it `11.0`, the `Tanh` of `11.0` is `0.999999999`. 
+The difference (the gradient) is `0.000000004`. It is so vanishingly small that the network cannot use it to learn. It is stuck!
+
+**Connection to the assignment.**
+In the `01_Next_Word_Predictor.ipynb` notebook, we explicitly initialized our weights as small decimals:
+`W1 = np.random.randn(vocabulary_size, hidden_size) * 0.1`
+
+We multiplied by `0.1` specifically to prevent the inputs to the `Tanh` function from becoming too large. By keeping the numbers small and close to zero, we keep the network in the "steep" part of the Tanh curve, guaranteeing that the learning signal will not vanish when we train it later!
+
+**My Understanding**
+(Learner space to explain this in their own words later).
+
+---
+
+# 13. Backpropagation and The Gradient
+
+**Definition.**
+Backpropagation is the algorithm a neural network uses to calculate exactly how much each weight contributed to the final error. It does this by calculating the **Gradient** (a partial derivative) for every single weight.
+
+**What exactly is a Gradient?**
+A Gradient is a mathematical measurement of **slope** or **sensitivity**. 
+If you change a weight by $0.01$, the Gradient tells you exactly how much the final Error will change. 
+- If the Gradient is $+5.0$, it means: *"Increasing this weight by 1 will increase the error by 5."* (So we should decrease the weight).
+- If the Gradient is $-2.0$, it means: *"Increasing this weight by 1 will decrease the error by 2."* (So we should increase the weight).
+
+**Why it is needed.**
+Without the Gradient, the network is blind. If the network guesses `"Shipment"` instead of `"Receive"`, it knows it was wrong, but it has 10,000 weights. Which ones should it change? Randomly guessing would take millions of years. Backpropagation uses Calculus (the Chain Rule) to calculate the exact Gradient for every single weight in one mathematically perfect sweep backwards through the network.
+
+**Intuition (The Factory Floor).**
+Imagine a factory that builds cars. The car comes out missing a steering wheel (The Error). 
+- **Forward Pass:** The chassis moves from Station 1 to Station 2 to Station 3.
+- **Backpropagation:** The boss walks *backwards* from the end of the line. At Station 3, they ask: "Did you mess up?" Station 3 says "No, I just paint the car, but Station 2 gave it to me without a wheel." The boss goes to Station 2: "Did you mess up?" Station 2 says "Yes, my machine was calibrated wrong."
+The boss just calculated the "Gradient" — they found exactly who was responsible and how much they need to adjust their machine.
+
+**Small Numerical Example (The Apple Price).**
+Let's predict the price of apples. Rule: 1 Apple = $2.
+Our network has one weight: `W = 0.5`. 
+Input: `3` apples.
+- **Forward Pass:** $3 \times 0.5 = 1.50$.
+- **Error (Loss):** Expected $\$6.00$. We guessed $\$1.50$. The Error is $4.50$.
+- **The Gradient (Backpropagation):** The network uses Calculus to find the slope of the error. The formula for the Gradient here is just the negative of the Input: $-3$. This Gradient tells us: *"If you increase the weight, the error will go down by 3 times that amount."*
+- **The Update (Fine-tuning):** We update the weight by subtracting a fraction of the Gradient. 
+  `New Weight = Old Weight - (LearningRate * Gradient)`
+  `New Weight = 0.5 - (0.1 * -3)`
+  `New Weight = 0.5 + 0.3 = 0.8`
+In one step, our weight improved from `0.5` to `0.8`!
+
+**Connection to the assignment.**
+In Week 1, we are only building the **Forward Pass**. We are just moving the car from Station 1 to Station 3. Because we don't have Backpropagation built yet, the network cannot learn. The predictions in our Jupyter notebook are random. In future assignments, we will write the code to send the boss walking backwards through the matrices to calculate the Gradients and update `W1` and `W2`!
+
+**My Understanding**
+(Learner space to explain this in their own words later).
+
+---
+
+# 14. Activation Functions
+
+**Definition.**
+An activation function is a mathematical equation applied to the output of a neural network layer. It determines whether a neuron should be "activated" or not, and introduces non-linearity into the network.
+
+**Why it is needed.**
+If a neural network only uses straight multiplication and addition (without an activation function), stacking multiple layers is completely useless because a linear equation times a linear equation is just another linear equation. Activation functions introduce "curves" into the math, allowing the network to learn complex, real-world patterns.
+
+**Types of Activation Functions:**
+1. **Sigmoid:** Squashes values between `0` and `1`. Historically popular, great for outputting probabilities (binary classification). However, it suffers from the "vanishing gradient" problem because the curve goes completely flat for large positive or negative numbers.
+2. **Tanh:** Squashes values between `-1` and `1`. It is "zero-centered," which keeps the math balanced and makes learning faster. It is excellent for simple networks (like our Week 1 assignment) and Recurrent Neural Networks (RNNs).
+3. **ReLU (Rectified Linear Unit):** The formula is `max(0, x)`. If the number is negative, it becomes 0. If it is positive, it stays the same. Because the curve never flattens out for positive numbers, it completely eliminates the vanishing gradient problem. It is the default choice for modern, deep neural networks.
+
+**Connection to the assignment.**
+In the `01_Next_Word_Predictor.ipynb` notebook, we use the `np.tanh()` activation function in our hidden layer to apply non-linearity. 
+
+**My Understanding**
+(Learner space to explain this in their own words later).
+
+---
+
+# 15. Gradient Descent (Visualizing the Learning Process)
+
+**Definition.**
+Gradient Descent is the optimization algorithm used to minimize the Error (Loss) of a neural network. It works by calculating the Gradient (slope) and taking small steps downhill.
+
+**Intuition (The Bowl).**
+Imagine a graph shaped like a giant bowl or valley:
+* **The X-axis (horizontal)** is your **Weight** (e.g., the number `0.5`). 
+* **The Y-axis (vertical)** is your **Error** (how wrong the network's guess was).
+
+Our ultimate goal is to get to the very bottom of the bowl, where the Error (Y) is `0`.
+
+Right now, you are standing at a specific point on the side of that bowl. Your current location is your current Weight (X) and your current Error (Y). The **Gradient** is literally just the steepness of the ground beneath your feet right now.
+
+If you are blindfolded on a hill and want to reach the bottom, you feel the slope with your feet. 
+* If the slope goes *up* to your right, you take a step to your left. 
+* If the slope goes *up* to your left, you take a step to your right.
+
+That is exactly what Gradient Descent does! 
+1. It calculates the slope (Gradient).
+2. It takes a step in the opposite direction (changing X, the Weight).
+3. The Error (Y) goes down!
+
+**Connection to the assignment.**
+In Week 2, we will implement this exact logic to slide our randomly initialized weights down to the bottom of the error bowl!
+
+---
+
+# 16. The Complete Training Loop
+
+To summarize everything we have learned so far, here is a visual flowchart of a Neural Network's entire lifecycle (Forward Pass + Backward Pass + Gradient Descent):
+
+```mermaid
+graph TD
+    classDef forward fill:#d4edda,stroke:#28a745,stroke-width:2px;
+    classDef error fill:#f8d7da,stroke:#dc3545,stroke-width:2px;
+    classDef backward fill:#fff3cd,stroke:#ffc107,stroke-width:2px;
+    classDef update fill:#d1ecf1,stroke:#17a2b8,stroke-width:2px;
+
+    A["1. FORWARD PASS<br/>(Make a guess)"]:::forward
+    B["2. LOSS / ERROR<br/>(How wrong are we?)"]:::error
+    C["3. BACKWARD PASS<br/>(Who is to blame?)"]:::backward
+    D["4. UPDATE WEIGHTS<br/>(Gradient Descent)"]:::update
+
+    A -->|"Prediction vs Reality"| B
+    B -->|"Send Error Backwards"| C
+    C -->|"Calculate Gradients"| D
+    D -->|"Ready for next try!"| A
+```
+
+---
+
+# 17. Loss Functions
+
+**Definition.**
+A Loss Function (or Cost Function) is a mathematical formula that calculates exactly how "wrong" a neural network's predictions are compared to the true answers.
+
+**Types of Loss Functions:**
+1. **Mean Squared Error (MSE):** 
+   - *Best for:* Predicting continuous numbers (e.g., house prices, temperature).
+   - *How it works:* It takes the difference between the prediction and the true number, and squares it. Squaring ensures that big errors are punished much harder than small errors.
+2. **Cross-Entropy Loss (Log Loss):**
+   - *Best for:* Classification tasks where the output is probabilities (like our Next Word Predictor).
+   - *How it works:* It measures the "distance" between the network's predicted probabilities and the true 100% label. It heavily penalizes the network if it is confidently wrong (e.g., guessing 99% for "Cabinet" when the answer is "Shipment"). 
+
+**Connection to the assignment.**
+Because our Next Word Predictor outputs probabilities using Softmax, we must use **Cross-Entropy Loss**.
+
+---
+
+# 18. Train vs Test Data
+
+**Definition.**
+When training a neural network, we must split our dataset into two separate piles:
+1. **Training Data (usually 80%):** The network uses this data to learn. It looks at the answers and updates its weights.
+2. **Testing Data (usually 20%):** The network uses this data to prove it actually learned the underlying pattern, and didn't just memorize the answers. The network is NEVER allowed to look at the answers for the test data during training!
+
+**Why it is needed (Overfitting).**
+Imagine giving a student a practice exam with the answer key. They memorize the exact answers (A, B, C, A, D). If you give them the *exact same exam* for their final, they will score 100%, but they didn't actually learn the subject! This is called **Overfitting**. By hiding the Test Data until the very end, we verify that the network actually learned the rules of the universe.
+
+---
+
+# 19. The Calculus of Backpropagation (For Reference)
+
+*Note: You do not need to memorize these formulas, but they are here if you want to understand the exact math happening under the hood.*
+
+**1. The Output Layer Gradients (`dW2`, `db2`)**
+Because we combine Softmax and Cross-Entropy Loss, the derivative simplifies into something incredibly elegant. The slope (gradient) of the error with respect to the output logits is simply the predicted probabilities minus the true one-hot vector:
+`d_logits = probabilities - true_label_one_hot`
+- `dW2 = hidden_layer.T.dot(d_logits)`
+- `db2 = np.sum(d_logits, axis=0)`
+
+**2. The Hidden Layer Gradients (`dW1`, `db1`)**
+To calculate how much `W1` contributed to the error, we must send the `d_logits` error backwards through `W2` and then through the `Tanh` activation function. 
+The derivative of `Tanh(x)` is `1 - Tanh(x)^2`.
+- `d_hidden = d_logits.dot(W2.T) * (1 - hidden_layer**2)`
+- `dW1 = input_data.T.dot(d_hidden)`
+- `db1 = np.sum(d_hidden, axis=0)`

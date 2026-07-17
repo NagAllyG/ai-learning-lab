@@ -1,0 +1,57 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Virtual Environment directories (Windows)
+Include/
+Lib/
+Scripts/
+pyvenv.cfg
+
+# VS Code
+.vscode/
+
+# MacOS
+.DS_Store
+ai-learning/Lib/*
+ai-learning/share/*
+ai-learning/bin/*
+ai-learning/include/*
+ai-learning/etc/*
+ai-learning/etc/*
