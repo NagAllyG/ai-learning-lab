@@ -1987,3 +1987,24 @@ The derivative of `Tanh(x)` is `1 - Tanh(x)^2`.
 - `d_hidden = d_logits.dot(W2.T) * (1 - hidden_layer**2)`
 - `dW1 = input_data.T.dot(d_hidden)`
 - `db1 = np.sum(d_hidden, axis=0)`
+
+---
+
+# 20. The Learning Rate
+
+**Definition.**
+The Learning Rate (often abbreviated as `lr` or $\alpha$) is a hyperparameter that determines **how big of a step** the neural network takes during Gradient Descent. 
+
+**Why it is needed.**
+When Backpropagation calculates the Gradient, the Gradient only tells us the *direction* to move to reduce the error. If we blindly subtract the full Gradient from our weights, we might change the weights too violently and break the network. The Learning Rate scales that Gradient down so we take safe, controlled steps.
+
+**Intuition (Walking down the bowl).**
+Imagine you are walking down the side of the bowl to reach the bottom (Error = 0).
+- **Too Small (e.g., `0.0001`):** You take microscopic baby steps. It will take you 10 years (millions of epochs) to reach the bottom. The training is painfully slow.
+- **Too Big (e.g., `10.0`):** You take giant leaps. You completely overshoot the bottom of the bowl and accidentally jump to the other side of the mountain, getting further away from the answer! The network becomes unstable and the Loss explodes to infinity.
+- **Just Right (e.g., `0.1` or `0.01`):** You take smooth, steady strides directly to the bottom of the bowl in a reasonable amount of time.
+
+**Connection to the assignment.**
+In the `01_Next_Word_Predictor.ipynb` notebook, we use the formula:
+`New Weight = Old Weight - (LearningRate * Gradient)`
+By setting `learning_rate = 0.1`, we tell our network to only apply 10% of the Gradient's recommended change during each step, ensuring stable and steady learning.
